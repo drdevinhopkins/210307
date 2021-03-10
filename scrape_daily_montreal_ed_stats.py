@@ -12,7 +12,7 @@ print('old data: ', len(old_data), ' rows, ending ', old_data.date.max())
 
 url = 'https://santemontreal.qc.ca/fileadmin/fichiers_portail/Donnees_urgence/urgence_quotidien_media.html'
 r = requests.get(url)
-soup = BeautifulSoup(r.text)
+soup = BeautifulSoup(r.text, features="html.parser)
 
 table = soup.find('table')
 
