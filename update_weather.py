@@ -6,7 +6,7 @@ from datetime import date
 
 
 # %%
-old_weather = pd.read_csv('../CYULweather.csv')
+old_weather = pd.read_csv('CYULweather.csv')
 # old_weather.tail()
 
 
