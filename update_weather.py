@@ -35,6 +35,8 @@ new_weather = pd.read_csv('https://mesonet.agron.iastate.edu/cgi-bin/request/aso
 
 
 # %%
+old_weather.valid = pd.to_datetime(old_weather.valid)
+new_weather.valid = pd.to_datetime(new_weather.valid)
 concat_weather = pd.concat([old_weather, new_weather], ignore_index=True).drop_duplicates(
     subset='valid', keep='last')
 # concat_weather.tail(50)
