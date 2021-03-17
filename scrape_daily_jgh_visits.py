@@ -19,6 +19,7 @@ if new_jgh_last_5 != old_jgh_last_5:
         [{'ds': pd.to_datetime(date.today()-timedelta(days=1)), 'y': jgh_visits_yest}])
     concat_jgh_data = old_jgh_data.append(
         new_jgh_data, ignore_index=True, sort=True)
-    concat_jgh_data.to_csv('jghDailyVisits.csv', index=False)
+    concat_jgh_data.drop_duplicates(keep='first').to_csv(
+        'jghDailyVisits.csv', index=False)
 else:
     print('no new data')
