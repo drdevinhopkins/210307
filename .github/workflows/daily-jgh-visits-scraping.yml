@@ -32,7 +32,7 @@ jobs:
           timezone: America/Toronto
       - name: Run the script
         run: |
-          python scrape_daily_jgh_visits.py
+          python scripts/scrape_daily_jgh_visits.py
       - uses: stefanzweifel/git-auto-commit-action@v4
       # - name: Commit updated-csvs
       #   run: |

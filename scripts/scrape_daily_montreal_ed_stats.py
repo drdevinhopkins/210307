@@ -6,7 +6,7 @@ import time
 import os
 
 
-old_data = pd.read_csv('dailyMontrealEdStats.csv')
+old_data = pd.read_csv('..data/dailyMontrealEdStats.csv')
 old_data['date'] = pd.to_datetime(old_data['date'])
 print('old data: ', len(old_data), ' rows, ending ', old_data.date.max())
 
@@ -33,7 +33,7 @@ for tr in table_rows[7:][:-6]:
 
 df = pd.DataFrame.from_records(df_rows, columns=columns)
 
-ccolumns.remove('Installation')
+columns.remove('Installation')
 
 for int_col in columns:
     df[int_col] = pd.to_numeric(df[int_col], errors='coerce')
@@ -50,9 +50,9 @@ concat_data = pd.concat([old_data, new_data], ignore_index=False)
 concat_data = concat_data.drop_duplicates().reset_index(drop=True)
 print('concat data: ', len(concat_data), ' rows')
 
-concat_data.to_csv('dailyMontrealEdStats.csv', index=False)
+concat_data.to_csv('..data/dailyMontrealEdStats.csv', index=False)
 
-old_jgh_data = pd.read_csv('jghDailyVisits.csv')
+old_jgh_data = pd.read_csv('../data/jghDailyVisits.csv')
 old_jgh_data['ds'] = pd.to_datetime(old_jgh_data['ds'])
 print('old jgh data: ', len(old_jgh_data),
       ' rows, ending ', old_jgh_data.ds.max())
@@ -68,4 +68,4 @@ concat_jgh_data = old_jgh_data.append(
 
 print('concat jgh data: ', len(concat_jgh_data))
 
-concat_jgh_data.to_csv('jghDailyVisits.csv', index=False)
+concat_jgh_data.to_csv('../data/jghDailyVisits.csv', index=False)

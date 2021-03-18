@@ -32,8 +32,8 @@ jobs:
           timezone: America/Toronto
       - name: Run the script
         run: |
-          python scrape_hourly_quebec_ed_stats.py
+          python scripts/scrape_hourly_quebec_ed_stats.py
       - name: Update the weather
         run: |
-          python update_weather.py
+          python scripts/update_weather.py
       - uses: stefanzweifel/git-auto-commit-action@v4
