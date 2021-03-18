@@ -1,6 +1,6 @@
 import pandas as pd
 
-old_data = pd.read_csv('../data/hourlyQuebecEDStats.csv')
+old_data = pd.read_csv('data/hourlyQuebecEDStats.csv')
 old_data['Mise_a_jour'] = pd.to_datetime(old_data['Mise_a_jour'])
 old_data["Heure_de_l'extraction_(image)"] = pd.to_datetime(
     old_data["Heure_de_l'extraction_(image)"])
@@ -27,7 +27,7 @@ concat_data = pd.concat([old_data, new_data], ignore_index=False)
 concat_data = concat_data.drop_duplicates().reset_index(drop=True)
 print('concat data: ', len(concat_data))
 
-concat_data.to_csv('..data/hourlyQuebecEDStats.csv', index=False)
+concat_data.to_csv('data/hourlyQuebecEDStats.csv', index=False)
 
 new_jgh_hourly = new_data[new_data.No_permis_installation == 12685608]
 new_jgh_hourly = new_jgh_hourly[[
@@ -36,11 +36,11 @@ new_jgh_hourly = new_jgh_hourly.rename(
     columns={'Nombre_de_civieres_occupees': 'y', "Heure_de_l'extraction_(image)": 'ds'})
 new_jgh_hourly.ds = pd.to_datetime(new_jgh_hourly.ds)
 
-jgh_occupancy = pd.read_csv('../data/jghOccupancy.csv')
+jgh_occupancy = pd.read_csv('data/jghOccupancy.csv')
 jgh_occupancy.ds = pd.to_datetime(jgh_occupancy.ds)
 
 jgh_occupancy = jgh_occupancy.append(
     new_jgh_hourly, ignore_index=True, sort=False)
 jgh_occupancy = jgh_occupancy.drop_duplicates()
 jgh_occupancy = jgh_occupancy.dropna()
-jgh_occupancy.to_csv('../data/jghOccupancy.csv', index=False)
+jgh_occupancy.to_csv('data/jghOccupancy.csv', index=False)

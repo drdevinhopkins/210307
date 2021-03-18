@@ -6,7 +6,7 @@ from datetime import date
 
 
 # %%
-old_weather = pd.read_csv('..data/CYULweather.csv')
+old_weather = pd.read_csv('data/CYULweather.csv')
 # old_weather.tail()
 
 
@@ -43,7 +43,7 @@ concat_weather = pd.concat([old_weather, new_weather], ignore_index=True).drop_d
 
 
 # %%
-concat_weather.to_csv('..data/CYULweather.csv', index=False)
+concat_weather.to_csv('data/CYULweather.csv', index=False)
 
 
 # %%
